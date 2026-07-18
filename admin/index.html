@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Yub Raj Kaucha Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- Login Section -->
+    <div id="login-section" class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h2>Admin Login</h2>
+                <p>Welcome back, Please login to your account.</p>
+            </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Enter Username" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter Password" required>
+                    </div>
+                </div>
+                <div class="error-message" id="login-error">Invalid username or password!</div>
+                <button type="submit" class="btn-login">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Section (Hidden by default) -->
+    <div id="admin-dashboard" class="dashboard-container" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active" data-tab="tab-dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                <li data-tab="tab-hero"><i class="fas fa-home"></i> Personal Information</li>
+                <li data-tab="tab-about"><i class="fas fa-user"></i> About Me</li>
+                <li data-tab="tab-education"><i class="fas fa-graduation-cap"></i> Education</li>
+                <li data-tab="tab-skills"><i class="fas fa-cogs"></i> Skills</li>
+                <li data-tab="tab-projects"><i class="fas fa-project-diagram"></i> Projects</li>
+                <li data-tab="tab-experience"><i class="fas fa-briefcase"></i> Experience</li>
+                <li data-tab="tab-certificates"><i class="fas fa-award"></i> Certificates</li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="menu-toggle" class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="topbar-title">Overview</div>
+                </div>
+                <div class="user-profile" id="user-profile">
+                    <div class="user-info">
+                        <span>Welcome, <strong>Admin</strong></span>
+                        <i class="fas fa-user-circle"></i>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                    <div class="dropdown-menu-profile" id="profile-dropdown">
+                        <div class="dropdown-item" data-action="profile">
+                            <i class="fas fa-user-edit"></i>
+                            <span>Profile Update</span>
+                        </div>
+                        <div class="dropdown-item" data-action="contact">
+                            <i class="fas fa-address-book"></i>
+                            <span>Contact Update</span>
+                        </div>
+                        <div class="dropdown-item" data-action="map">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Map Coordinations</span>
+                        </div>
+                        <hr>
+                        <div class="dropdown-item logout-item" id="dropdown-logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="tab-content">
+                <!-- Dashboard Tab -->
+                <div id="tab-dashboard" class="tab-pane active">
+                    <h3>Dashboard Overview</h3>
+                    <p>Welcome to the admin panel. From here you can manage all sections of your portfolio.</p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <div class="stat-info">
+                                <h4>6</h4>
+                                <p>Total Projects</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-briefcase"></i>
+                            <div class="stat-info">
+                                <h4>7</h4>
+                                <p>Experiences</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-cogs"></i>
+                            <div class="stat-info">
+                                <h4>16</h4>
+                                <p>Skills Listed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Section Tab -->
+                <div id="tab-hero" class="tab-pane">
+                    <h3>Edit Personal Information</h3>
+                    <form class="admin-form" id="form-hero">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="hero-name-input" value="Yub Raj Kaucha">
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" id="hero-title-input" value="Electronics & Communication Engineer">
+                        </div>
+                        <div class="form-group">
+                            <label>Tagline</label>
+                            <textarea id="hero-tagline-input"
+                                rows="4">Passionate about designing innovative electronic systems and embedded solutions. Transforming ideas into reality through cutting-edge technology.</textarea>
+                        </div>
+                        <button type="button" id="btn-save-hero" class="btn-save">Save Changes</button>
+                    </form>
+                </div>
+
+                <!-- About Tab -->
+                <div id="tab-about" class="tab-pane">
+                    <div class="tab-header">
+                        <h3>About Me Paragraphs & Headings</h3>
+                        <button class="btn-add" id="btn-add-about"><i class="fas fa-plus"></i> Add New Item</button>
+                    </div>
+
+                    <!-- Add/Edit Form (Hidden by default) -->
+                    <div id="about-form-container"
+                        style="display: none; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
+                        <h4 style="margin-bottom: 15px;" id="about-form-title">Add New Item</h4>
+                        <form class="admin-form"
+                            style="padding: 0; box-shadow: none; background: transparent; max-width: 100%;">
+                            <input type="hidden" id="about-item-index" value="-1">
+                            <div class="form-group">
+                                <label>Heading (Optional)</label>
+                                <input type="text" id="about-heading-input" placeholder="e.g. Professional Summary">
+                            </div>
+                            <div class="form-group">
+                                <label>Paragraph Content</label>
+                                <textarea id="about-text-input" rows="4"
+                                    placeholder="Enter the content here..."></textarea>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="button" id="btn-save-about-item" class="btn-save">Save Item</button>
+                                <button type="button" id="btn-cancel-about-item" class="btn-logout"
+                                    style="width: auto; padding: 12px 25px;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-container" id="about-paragraphs-list">
+                        <!-- Paragraphs will be loaded here dynamically -->
+                    </div>
+                    <button type="button" id="btn-save-about-paragraphs" class="btn-save mt-3"
+                        style="display: none;">Save Paragraphs</button>
+
+                    <div class="tab-header" style="margin-top: 40px;">
+                        <h3>Objective Cards</h3>
+                        <button class="btn-add" id="btn-add-objective"><i class="fas fa-plus"></i> Add New Card</button>
+                    </div>
+
+                    <!-- Add/Edit Form for Objective (Hidden by default) -->
+                    <div id="objective-form-container"
+                        style="display: none; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
+                        <h4 style="margin-bottom: 15px;" id="objective-form-title">Add New Objective</h4>
+                        <form class="admin-form"
+                            style="padding: 0; box-shadow: none; background: transparent; max-width: 100%;">
+                            <input type="hidden" id="objective-item-index" value="-1">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input type="text" id="objective-heading-input" placeholder="e.g. Career Objective">
+                            </div>
+                            <div class="form-group">
+                                <label>Icon (FontAwesome Class)</label>
+                                <input type="text" id="objective-icon-input" placeholder="e.g. fas fa-bullseye"
+                                    value="fas fa-bullseye">
+                            </div>
+                            <div class="form-group">
+                                <label>Paragraph Content</label>
+                                <textarea id="objective-text-input" rows="4"
+                                    placeholder="Enter the content here..."></textarea>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="button" id="btn-save-objective-item" class="btn-save">Save Card</button>
+                                <button type="button" id="btn-cancel-objective-item" class="btn-logout"
+                                    style="width: auto; padding: 12px 25px;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-container" id="about-objectives-list">
+                        <!-- Objectives will be loaded here dynamically -->
+                    </div>
+                    <button type="button" id="btn-save-about-objectives" class="btn-save mt-3"
+                        style="display: none;">Save Objectives</button>
+                </div>
+
+                <!-- Education Tab -->
+                <div id="tab-education" class="tab-pane">
+                    <div class="tab-header">
+                        <h3>Manage Education</h3>
+                        <button class="btn-add" id="btn-add-education"><i class="fas fa-plus"></i> Add
+                            Education</button>
+                    </div>
+
+                    <!-- Add/Edit Form for Education (Hidden by default) -->
+                    <div id="education-form-container"
+                        style="display: none; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
+                        <h4 style="margin-bottom: 15px;" id="education-form-title">Add New Education</h4>
+                        <form class="admin-form"
+                            style="padding: 0; box-shadow: none; background: transparent; max-width: 100%;">
+                            <input type="hidden" id="education-item-index" value="-1">
+                            <div class="form-group">
+                                <label>Level / Category Title (e.g. B.Tech or Schooling)</label>
+                                <input type="text" id="education-level-input" placeholder="e.g. B.Tech">
+                            </div>
+                            <div class="form-group">
+                                <label>Course Name / Specialization</label>
+                                <input type="text" id="education-course-input"
+                                    placeholder="e.g. Electronics & Communication Engineering">
+                            </div>
+                            <div class="form-group">
+                                <label>Year (e.g. 2017-2021)</label>
+                                <input type="text" id="education-year-input" placeholder="e.g. 2017-2021">
+                            </div>
+                            <div class="form-group">
+                                <label>Percentage / CGPA</label>
+                                <input type="text" id="education-percentage-input" placeholder="e.g. 6.61/10">
+                            </div>
+                            <div class="form-group">
+                                <label>University / Board</label>
+                                <input type="text" id="education-university-input" placeholder="e.g. JNTUH">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="button" id="btn-save-education-item" class="btn-save">Save
+                                    Education</button>
+                                <button type="button" id="btn-cancel-education-item" class="btn-logout"
+                                    style="width: auto; padding: 12px 25px;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-container" id="education-list">
+                        <!-- Education items will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Skills Tab -->
+                <div id="tab-skills" class="tab-pane">
+                    <div class="tab-header">
+                        <h3>Manage Skills</h3>
+                    </div>
+
+                    <!-- Add Form for Skills (Hidden by default) -->
+                    <div id="skill-form-container"
+                        style="display: none; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
+                        <h4 style="margin-bottom: 15px;" id="skill-form-title">Add New Skill</h4>
+                        <form class="admin-form"
+                            style="padding: 0; box-shadow: none; background: transparent; max-width: 100%;">
+                            <input type="hidden" id="skill-item-index" value="-1">
+                            <div class="form-group">
+                                <label>Category Name (e.g. Programming, Electronics)</label>
+                                <input type="text" id="skill-category-input" placeholder="e.g. Programming Language">
+                            </div>
+                            <div class="form-group">
+                                <label>Category Icon (e.g. fas fa-briefcase)</label>
+                                <input type="text" id="skill-icon-input" placeholder="e.g. fas fa-briefcase"
+                                    value="fas fa-briefcase">
+                            </div>
+                            <div class="form-group">
+                                <label>Skill Name</label>
+                                <input type="text" id="skill-name-input" placeholder="e.g. JavaScript / C++">
+                            </div>
+                            <div class="form-group">
+                                <label>Proficiency Percentage (%)</label>
+                                <input type="number" id="skill-percentage-input" placeholder="e.g. 85" min="0"
+                                    max="100">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="button" id="btn-save-skill-item" class="btn-save">Save Skill</button>
+                                <button type="button" id="btn-cancel-skill-item" class="btn-logout"
+                                    style="width: auto; padding: 12px 25px;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-container" id="skills-list">
+                        <!-- Skills will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Projects Tab -->
+                <div id="tab-projects" class="tab-pane">
+                    <div class="tab-header">
+                        <h3>Manage Projects</h3>
+                    </div>
+
+                    <!-- Add Form for Projects (Hidden by default) -->
+                    <div id="project-form-container"
+                        style="display: none; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
+                        <h4 style="margin-bottom: 15px;" id="project-form-title">Add New Project</h4>
+                        <form class="admin-form"
+                            style="padding: 0; box-shadow: none; background: transparent; max-width: 100%;">
+                            <input type="hidden" id="project-item-index" value="-1">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                <div class="form-group">
+                                    <label>Category Name (e.g. IoT, Embedded)</label>
+                                    <input type="text" id="project-category-input" placeholder="e.g. IoT">
+                                </div>
+                                <div class="form-group">
+                                    <label>Category Icon (e.g. fas fa-network-wired)</label>
+                                    <input type="text" id="project-icon-input" placeholder="e.g. fas fa-network-wired"
+                                        value="fas fa-network-wired">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Project Title</label>
+                                <input type="text" id="project-title-input" placeholder="e.g. Smart Home Automation">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Description</label>
+                                <textarea id="project-description-input" rows="3"
+                                    placeholder="Describe your project..."></textarea>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Image URL</label>
+                                <input type="text" id="project-image-input" placeholder="https://unsplash.com/...">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Tech Stack / Tags (Comma-separated)</label>
+                                <input type="text" id="project-tags-input" placeholder="ESP32, Arduino, C++, IoT">
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                <div class="form-group">
+                                    <label>GitHub/Code URL</label>
+                                    <input type="text" id="project-github-input" placeholder="https://github.com/...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Live Demo URL</label>
+                                    <input type="text" id="project-demo-input" placeholder="https://demo-link.com/...">
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="button" id="btn-save-project-item" class="btn-save">Save Project</button>
+                                <button type="button" id="btn-cancel-project-item" class="btn-logout"
+                                    style="width: auto; padding: 12px 25px;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-container" id="projects-list">
+                        <!-- Projects will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Experience Tab -->
+                <div id="tab-experience" class="tab-pane">
+                    <div class="tab-header">
+                        <h3>Manage Experience & Training</h3>
+                    </div>
+
+                    <!-- Add Form for Experience (Hidden by default) -->
+                    <div id="experience-form-container"
+                        style="display: none; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
+                        <h4 style="margin-bottom: 15px;" id="experience-form-title">Add New Experience</h4>
+                        <form class="admin-form"
+                            style="padding: 0; box-shadow: none; background: transparent; max-width: 100%;">
+                            <input type="hidden" id="experience-item-index" value="-1">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                <div class="form-group">
+                                    <label>Type (Badge - e.g. Internship, Training)</label>
+                                    <input type="text" id="experience-badge-input" placeholder="e.g. Internship">
+                                </div>
+                                <div class="form-group">
+                                    <label>Icon (e.g. fas fa-briefcase)</label>
+                                    <input type="text" id="experience-icon-input" placeholder="e.g. fas fa-briefcase"
+                                        value="fas fa-briefcase">
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                <div class="form-group">
+                                    <label>Job Title / Course Name</label>
+                                    <input type="text" id="experience-title-input" placeholder="e.g. PCB Design Intern">
+                                </div>
+                                <div class="form-group">
+                                    <label>Duration (Dates)</label>
+                                    <input type="text" id="experience-duration-input"
+                                        placeholder="e.g. June 2023 - Aug 2023">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Company / Organization</label>
+                                <input type="text" id="experience-company-input"
+                                    placeholder="e.g. Tech Solutions Pvt. Ltd.">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Description</label>
+                                <textarea id="experience-description-input" rows="3"
+                                    placeholder="Describe your responsibilities..."></textarea>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Key Skills / Tags (Comma-separated)</label>
+                                <input type="text" id="experience-tags-input" placeholder="PCB Design, IoT, Testing">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="button" id="btn-save-experience-item" class="btn-save">Save
+                                    Experience</button>
+                                <button type="button" id="btn-cancel-experience-item" class="btn-logout"
+                                    style="width: auto; padding: 12px 25px;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-container" id="experience-list">
+                        <!-- Experience items will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Certificates Tab -->
+                <div id="tab-certificates" class="tab-pane">
+                    <div class="tab-header">
+                        <h3>Manage Certificates</h3>
+                    </div>
+
+                    <!-- Add Form for Certificates (Hidden by default) -->
+                    <div id="certificate-form-container"
+                        style="display: none; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
+                        <h4 style="margin-bottom: 15px;" id="certificate-form-title">Add New Certificate</h4>
+                        <form class="admin-form"
+                            style="padding: 0; box-shadow: none; background: transparent; max-width: 100%;">
+                            <input type="hidden" id="certificate-item-index" value="-1">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                <div class="form-group">
+                                    <label>Issuer / Category (e.g. Coursera, Udemy)</label>
+                                    <input type="text" id="certificate-issuer-input" placeholder="e.g. Coursera">
+                                </div>
+                                <div class="form-group">
+                                    <label>Icon (e.g. fas fa-award)</label>
+                                    <input type="text" id="certificate-icon-input" placeholder="e.g. fas fa-award"
+                                        value="fas fa-award">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Certificate Name</label>
+                                <input type="text" id="certificate-name-input"
+                                    placeholder="e.g. Python for Data Science">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Year</label>
+                                <input type="text" id="certificate-year-input" placeholder="e.g. 2023">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Description</label>
+                                <textarea id="certificate-description-input" rows="3"
+                                    placeholder="Describe the certificate / course..."></textarea>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label>Key Skills / Tags (Comma-separated)</label>
+                                <input type="text" id="certificate-tags-input"
+                                    placeholder="Python, Data Science, Analysis">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="button" id="btn-save-certificate-item" class="btn-save">Save
+                                    Certificate</button>
+                                <button type="button" id="btn-cancel-certificate-item" class="btn-logout"
+                                    style="width: auto; padding: 12px 25px;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-container" id="certificates-list">
+                        <!-- Certificates items will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Contact Update Section -->
+                <div id="tab-contact" class="tab-pane">
+                    <div class="contact-update-wrapper">
+                        <div class="contact-update-header">
+                            <div class="contact-update-icon-box">
+                                <i class="fas fa-address-book"></i>
+                            </div>
+                            <div>
+                                <h2>Contact Information</h2>
+                                <p>Update your public contact details shown on the portfolio.</p>
+                            </div>
+                        </div>
+                        <form id="contact-form" class="contact-form-card">
+                            <div class="contact-field">
+                                <div class="contact-field-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-field-body">
+                                    <label for="contact-email">Email Address</label>
+                                    <input type="email" id="contact-email" placeholder="e.g. yourname@example.com">
+                                </div>
+                            </div>
+                            <div class="contact-field">
+                                <div class="contact-field-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-field-body">
+                                    <label for="contact-phone">Phone Number</label>
+                                    <input type="tel" id="contact-phone" placeholder="e.g. +91 98765 43210">
+                                </div>
+                            </div>
+                            <div class="contact-field">
+                                <div class="contact-field-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-field-body">
+                                    <label for="contact-location">Location</label>
+                                    <input type="text" id="contact-location" placeholder="e.g. Lucknow, India">
+                                </div>
+                            </div>
+                            <div class="contact-form-footer">
+                                <button type="submit" class="btn-save contact-save-btn">
+                                    <i class="fas fa-save"></i> Save Contact Info
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- ===== Profile Update Modal ===== -->
+        <div id="profile-modal-overlay" class="profile-modal-overlay" style="display:none;">
+            <div class="profile-modal">
+                <div class="profile-modal-header">
+                    <h3><i class="fas fa-user-edit"></i> Update Profile</h3>
+                    <button class="profile-modal-close" id="profile-modal-close"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="profile-modal-body">
+                    <!-- Profile Picture Upload -->
+                    <div class="profile-pic-section">
+                        <div class="profile-pic-wrapper">
+                            <img id="profile-pic-preview" src="" alt="Profile Picture" class="profile-pic-img">
+                            <div class="profile-pic-placeholder" id="profile-pic-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <label for="profile-pic-input" class="profile-pic-overlay">
+                                <i class="fas fa-camera"></i>
+                                <span>Change Photo</span>
+                            </label>
+                        </div>
+                        <input type="file" id="profile-pic-input" accept="image/*" style="display:none;">
+                        <p class="profile-pic-hint">Click the photo to upload a new picture<br><small>Supports JPG, PNG,
+                                GIF &bull; Max ~2 MB</small></p>
+                        <button type="button" id="btn-remove-profile-pic" class="btn-remove-pic" style="display:none;">
+                            <i class="fas fa-trash-alt"></i> Remove Photo
+                        </button>
+                    </div>
+
+                    <!-- Profile Details -->
+                    <div class="profile-details-section">
+                        <div class="form-group">
+                            <label for="profile-display-name">Display Name</label>
+                            <div class="input-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="profile-display-name" placeholder="e.g. Yub Raj Kaucha">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-admin-email">Admin Email</label>
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="profile-admin-email" placeholder="e.g. admin@example.com">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-modal-footer">
+                    <button type="button" id="btn-cancel-profile" class="btn-logout"
+                        style="width:auto;padding:12px 25px;">Cancel</button>
+                    <button type="button" id="btn-save-profile" class="btn-save" style="width:auto;padding:12px 30px;">
+                        <i class="fas fa-save"></i> Save Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Overlay for mobile sidebar -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
