@@ -2463,9 +2463,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load Contact Data
     function loadContactData() {
         if (!contactEmailInput) return;
-        contactEmailInput.value = localStorage.getItem('contactEmail') || 'jitendrasharma.ece@gmail.com';
-        contactPhoneInput.value = localStorage.getItem('contactPhone') || '+91 8318357896';
-        contactLocationInput.value = localStorage.getItem('contactLocation') || 'Lucknow, India';
+        contactEmailInput.value = localStorage.getItem('contactEmail') || 'Yubrajkaucha2@gmail.com';
+        contactPhoneInput.value = localStorage.getItem('contactPhone') || '+358 449290992';
+        contactLocationInput.value = localStorage.getItem('contactLocation') || 'Helsinki, Finland';
     }
 
     loadContactData();
